@@ -51,6 +51,10 @@ $has_get = strpos($_SERVER['REQUEST_URI'],'?');
 $has_get_bool = ( $has_get !== false);
 $tmp_request_uri = $has_get_bool ? substr($_SERVER['REQUEST_URI'], 0 , $has_get) : $_SERVER['REQUEST_URI'];
 
+$get_index = trim($tmp_request_uri,'/');
+$get_index = str_replace('index.php', 'index_php', $get_index);
+unset($_GET[$get_index]);
+
 $behind_string = str_replace($index_php, '', $tmp_request_uri);
 $behind_string = trim($behind_string,'/');
 $behind_array = $behind_string === '' ? array() : explode('/', $behind_string);
