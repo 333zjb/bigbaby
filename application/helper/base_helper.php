@@ -18,3 +18,17 @@ function is_json($str)
     }
 }
 
+function config($name){
+    static $config = array();//利用static来实现只require一次
+
+    if(!isset($config[$name]) && !$config){
+        require APP_PATH . 'config.php';
+
+        if(!isset($config[$name])){
+            return null;
+        }
+    }
+
+    return $config[$name];
+}
+

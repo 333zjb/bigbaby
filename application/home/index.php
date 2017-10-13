@@ -17,7 +17,14 @@ class Index extends BaseController
         $a = array('a', 'b', 'c');
         $this->response_suc_msg($a);
     }
-    private function gg(){
-        echo 1;
+    public function gg(){
+        $database = new BaseModel();
+        $a = $database->select("tp_admin", [
+            "user_name",
+            "email"
+        ], [
+            "admin_id" => 10
+        ]);
+        var_dump($a);
     }
 }
