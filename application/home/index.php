@@ -6,7 +6,7 @@
  * Time: 下午4:05
  */
 
-class index
+class Index extends BaseController
 {
     public function __construct()
     {
@@ -14,7 +14,8 @@ class index
     }
 
     public function index(){
-        var_dump($_GET);
+        $a = $this->pack_input('a', '', true);
+        echo $a;
     }
     private function gg(){
         echo 1;
