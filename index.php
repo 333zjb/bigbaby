@@ -47,6 +47,12 @@ require BASE_PATH . 'basecontroller.php';
 require APP_PATH . 'helper/base_helper.php';
 
 //路由实现(server_name(/index.php)(/divide_group)/controller/method/param1/v1/param2/v2...)
+if($_SERVER['REQUEST_URI'] === '/favicon.ico'){
+    //由于目前是所有请求都重定向到index.php。所以访问favicon文件需要这样
+    echo file_get_contents('./favicon.ico');
+    die();
+}
+
 $divide_group = array('admin', 'home');//分组
 $index_php = str_replace($_SERVER['DOCUMENT_ROOT'], '', __FILE__);
 
