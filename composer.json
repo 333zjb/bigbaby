@@ -1,0 +1,17 @@
+{
+  "name":"BIGBABY",
+  "description":"PHP Framework",
+  "type":"Framework",
+  "keywords":[
+    "PHP","PHP Framework"
+  ],
+  "require":{
+    "catfan/medoo":"*"
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  }
+}

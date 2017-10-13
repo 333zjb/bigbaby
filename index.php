@@ -45,6 +45,7 @@ spl_autoload_register('auto_model_class');
 //手动加载必要文件
 require BASE_PATH . 'basecontroller.php';
 require APP_PATH . 'helper/base_helper.php';
+require 'vendor/autoload.php';
 
 //路由实现(server_name(/index.php)(/divide_group)/controller/method/param1/v1/param2/v2...)
 if($_SERVER['REQUEST_URI'] === '/favicon.ico'){
