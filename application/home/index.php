@@ -14,8 +14,8 @@ class Index extends BaseController
     }
 
     public function index(){
-        $a = $this->pack_input('a', '', true);
-        echo $a;
+        $a = array('a', 'b', 'c');
+        $this->response_suc_msg($a);
     }
     private function gg(){
         echo 1;

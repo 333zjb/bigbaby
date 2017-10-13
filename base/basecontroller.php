@@ -8,6 +8,11 @@
 
 class BaseController
 {
+    protected function __construct()
+    {
+        header('Content-type:text/html;charset=utf-8');
+    }
+
     protected function pack_input($index, $default = '', $xss_clean = FALSE){
         if(!isset($_POST[$index]) && !isset($_GET[$index])){
             return null;
@@ -38,6 +43,16 @@ class BaseController
         }
 
         return $data;
+    }
+
+    protected function response_error_msg($data = null, $message = "参数错误，请检查输入！")
+    {
+        exit(json_encode(array('result' => false, 'message' => $message, 'data' => $data)));
+    }
+
+    protected function response_suc_msg($data = null, $message = 'suc')
+    {
+        exit(json_encode(array('result' => true, 'message' => $message, 'data' => $data)));
     }
 
 }
