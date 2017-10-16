@@ -23,14 +23,13 @@ error_reporting(E_ALL);
 //定义常量
 define('APP_PATH', 'application/');
 define('BASE_PATH', 'base/');
-define('THIRD_PATH', 'thirdparty/');
 define('EXT', '.php');
 
 //自动加载类
 function auto_model_class($class_b)
 {
     $class = strtolower($class_b);
-    $paths = array('application/model/', 'thirdparty/');
+    $paths = array('application/model/');
     foreach ($paths as $path) {
         $tmp_file = $path . $class;
         if (is_file($tmp_file . EXT)) {

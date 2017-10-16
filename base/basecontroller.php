@@ -13,7 +13,7 @@ class BaseController
         header('Content-type:text/html;charset=utf-8');
     }
 
-    protected function pack_input($index, $default = '', $xss_clean = FALSE){
+    protected function pack_input($index, $default = '', $xss_clean = true){
         if(!isset($_POST[$index]) && !isset($_GET[$index])){
             return null;
         }
@@ -27,9 +27,14 @@ class BaseController
 
     protected function data_deal($data, $xss_clean){
         if($xss_clean){
-            $security = new Security();
-            $data = $security->getXssSafeParams($data);
+            static $htmlpurifier = [];
+            if(!$htmlpurifier){
+                $htmlpurifier['config'] = \HTMLPurifier_Config::createDefault();
+                $htmlpurifier['purifier'] = new \HTMLPurifier($htmlpurifier['config']);
+            }
+            $data = $htmlpurifier['purifier']->purify($data);
         }
+
         if (is_numeric($data)) {
             return $data;
         }
@@ -39,7 +44,7 @@ class BaseController
         }
 
         if (is_string($data)) {
-            return addslashes(strip_tags(trim($data)));
+            return addslashes(trim($data));
         }
 
         return $data;

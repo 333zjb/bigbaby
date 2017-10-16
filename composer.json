@@ -6,7 +6,8 @@
     "PHP","PHP Framework"
   ],
   "require":{
-    "catfan/medoo":"*"
+    "catfan/medoo":"*",
+    "ezyang/htmlpurifier": "dev-master"
   },
   "repositories": {
     "packagist": {
