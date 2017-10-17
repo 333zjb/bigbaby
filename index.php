@@ -49,59 +49,66 @@ require APP_PATH . 'helper/base_helper.php';
 
 
 //路由实现(server_name(/index.php)(/divide_group)/controller/method/param1/v1/param2/v2...)
-if($_SERVER['REQUEST_URI'] === '/favicon.ico'){
-    //由于目前是所有请求都重定向到index.php。所以访问favicon文件需要这样
-    echo file_get_contents('./favicon.ico');
-    die();
-}
-
-$divide_group = array('admin', 'home');//分组
-$index_php = str_replace($_SERVER['DOCUMENT_ROOT'], '', __FILE__);
-
-$has_get = strpos($_SERVER['REQUEST_URI'],'?');
-$has_get_bool = ( $has_get !== false);
-$tmp_request_uri = $has_get_bool ? substr($_SERVER['REQUEST_URI'], 0 , $has_get) : $_SERVER['REQUEST_URI'];
-
-$get_index = trim($tmp_request_uri,'/');
-$get_index = str_replace('index.php', 'index_php', $get_index);
-unset($_GET[$get_index]);
-
-$behind_string = str_replace($index_php, '', $tmp_request_uri);
-$behind_string = trim($behind_string,'/');
-$behind_array = $behind_string === '' ? array() : explode('/', $behind_string);
-$behind_array_length = count($behind_array);
 $request_param = array(
-    'divide_group'=>'home',
-    'controller'=>'index',
-    'method'=>'index'
+    'divide_group' => 'home',
+    'controller' => 'index',
+    'method' => 'index'
 );
-if($behind_array_length>0){
-    $had_divide_group = in_array($behind_array[0], $divide_group);
-    $request_param['divide_group'] = $had_divide_group ? $behind_array[0] : $request_param['divide_group'];
-
-    if($behind_array_length>1){
-        $request_param['controller'] = $had_divide_group ? $behind_array[1] : $behind_array[0];
-    }else{
-        $request_param['controller'] = $had_divide_group ? $request_param['controller'] : $behind_array[0];
+if(isset($_SERVER['REQUEST_URI'])) {
+    if ($_SERVER['REQUEST_URI'] === '/favicon.ico') {
+        //由于目前是所有请求都重定向到index.php。所以访问favicon文件需要这样
+        echo file_get_contents('./favicon.ico');
+        die();
     }
 
-    if($behind_array_length>2){
-        $request_param['method'] = $had_divide_group ? $behind_array[2] : $behind_array[1];
-    }else{
-        $tmp_method = isset($behind_array[1]) ? $behind_array[1] : $request_param['method'];
-        $request_param['method'] = $had_divide_group ? $request_param['method'] : $tmp_method;
+    $divide_group = array('admin', 'home', 'command');//分组
+    $index_php = str_replace($_SERVER['DOCUMENT_ROOT'], '', __FILE__);
+
+    $has_get = strpos($_SERVER['REQUEST_URI'], '?');
+    $has_get_bool = ($has_get !== false);
+    $tmp_request_uri = $has_get_bool ? substr($_SERVER['REQUEST_URI'], 0, $has_get) : $_SERVER['REQUEST_URI'];
+
+    $get_index = trim($tmp_request_uri, '/');
+    $get_index = str_replace('index.php', 'index_php', $get_index);
+    unset($_GET[$get_index]);
+
+    $behind_string = str_replace($index_php, '', $tmp_request_uri);
+    $behind_string = trim($behind_string, '/');
+    $behind_array = $behind_string === '' ? array() : explode('/', $behind_string);
+    $behind_array_length = count($behind_array);
+
+    if ($behind_array_length > 0) {
+        $had_divide_group = in_array($behind_array[0], $divide_group);
+        $request_param['divide_group'] = $had_divide_group ? $behind_array[0] : $request_param['divide_group'];
+
+        if ($behind_array_length > 1) {
+            $request_param['controller'] = $had_divide_group ? $behind_array[1] : $behind_array[0];
+        } else {
+            $request_param['controller'] = $had_divide_group ? $request_param['controller'] : $behind_array[0];
+        }
+
+        if ($behind_array_length > 2) {
+            $request_param['method'] = $had_divide_group ? $behind_array[2] : $behind_array[1];
+        } else {
+            $tmp_method = isset($behind_array[1]) ? $behind_array[1] : $request_param['method'];
+            $request_param['method'] = $had_divide_group ? $request_param['method'] : $tmp_method;
+        }
     }
+}else{
+    $request_param['divide_group'] = isset($_SERVER['argv'][1]) ? $_SERVER['argv'][1] : $request_param['divide_group'];
+    $request_param['controller'] = isset($_SERVER['argv'][2]) ? $_SERVER['argv'][2] : $request_param['controller'];
+    $request_param['method'] = isset($_SERVER['argv'][3]) ? $_SERVER['argv'][3] : $request_param['method'];
 }
-$request_class_path = APP_PATH . $request_param['divide_group'] . '/' . $request_param['controller'] .  EXT;
-if(file_exists($request_class_path)) {
+$request_class_path = APP_PATH . $request_param['divide_group'] . '/' . $request_param['controller'] . EXT;
+if (file_exists($request_class_path)) {
     require $request_class_path;
     $request_controller = new $request_param['controller']();
     $tmp_method = $request_param['method'];
-    if(method_exists($request_controller, $tmp_method) && is_callable(array($request_controller, $tmp_method))){
+    if (method_exists($request_controller, $tmp_method) && is_callable(array($request_controller, $tmp_method))) {
         $request_controller->$tmp_method();
-    }else{
+    } else {
         include './error_404.html';
     }
-}else{
+} else {
     include './error_404.html';
 }
