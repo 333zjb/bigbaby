@@ -108,12 +108,8 @@ if (file_exists($request_class_path)) {
     if (method_exists($request_controller, $tmp_method) && is_callable(array($request_controller, $tmp_method))) {
         $request_controller->$tmp_method();
     } else {
-        echo $request_param['divide_group'].'__'.$request_param['controller'].'__'.$request_param['method'];
-        //include __DIR__ . '/error_404.html';
+        include __DIR__ . '/error_404.html';
     }
 } else {
-    var_dump(file_exists($request_class_path));echo "<br>";
-    echo $request_param['divide_group'].'__'.$request_param['controller'].'__'.$request_param['method'];
-    echo "<br>";
-    //include __DIR__ . '/error_404.html';
+    include __DIR__ . '/error_404.html';
 }
