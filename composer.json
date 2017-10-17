@@ -7,7 +7,8 @@
   ],
   "require":{
     "catfan/medoo":"*",
-    "ezyang/htmlpurifier": "dev-master"
+    "ezyang/htmlpurifier": "dev-master",
+    "predis/predis": "*"
   },
   "repositories": {
     "packagist": {

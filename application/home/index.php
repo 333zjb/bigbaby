@@ -6,19 +6,15 @@
  * Time: 下午4:05
  */
 
-class Index extends BaseController
+class Index extends Base_controller
 {
-    public function __construct()
-    {
 
-    }
-
-    public function index(){
+    public function ss(){
         $a = array('a', 'b', 'c');
         $this->response_suc_msg($a);
     }
     public function gg(){
-        $database = new BaseModel();
+        $database = new Base_model();
         $a = $database->select("tp_admin", [
             "user_name",
             "email"
@@ -27,4 +23,13 @@ class Index extends BaseController
         ]);
         var_dump($a);
     }
+    public function testredis(){
+        $redis = new \Predis\Client(config('redis'));
+        $redis->set('zjb', 'big');
+    }
+    public function get(){
+        $redis = new Redis_service();
+        var_dump($redis->get('zjb'));
+    }
+
 }

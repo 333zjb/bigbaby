@@ -6,9 +6,9 @@
  * Time: 上午9:19
  */
 
-class BaseController
+class Base_controller
 {
-    protected function __construct()
+    public function __construct()
     {
         header('Content-type:text/html;charset=utf-8');
     }

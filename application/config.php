@@ -13,3 +13,10 @@ $config['database'] = [
     'password' => '63d7b25c0e',
     'charset' => 'utf8'
 ];
+
+$config['redis'] = [
+    'scheme' => 'tcp',
+    'host'   => '127.0.0.1',
+    'port'   => 6379,
+    'database'  =>  3
+];

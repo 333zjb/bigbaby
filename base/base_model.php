@@ -6,7 +6,7 @@
  * Time: 下午5:23
  */
 
-class BaseModel extends \Medoo\Medoo
+class Base_model extends \Medoo\Medoo
 {
     public function __construct()
     {

@@ -29,7 +29,7 @@ define('EXT', '.php');
 function auto_model_class($class_b)
 {
     $class = strtolower($class_b);
-    $paths = array('application/model/');
+    $paths = array('application/model/', 'application/service/');
     foreach ($paths as $path) {
         $tmp_file = $path . $class;
         if (is_file($tmp_file . EXT)) {
@@ -43,8 +43,8 @@ spl_autoload_register('auto_model_class');
 
 //手动加载必要文件
 require 'vendor/autoload.php';
-require BASE_PATH . 'basecontroller.php';
-require BASE_PATH . 'basemodel.php';
+require BASE_PATH . 'base_controller.php';
+require BASE_PATH . 'base_model.php';
 require APP_PATH . 'helper/base_helper.php';
 
 
