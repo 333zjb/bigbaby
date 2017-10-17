@@ -33,6 +33,13 @@ class ComposerStaticInit4ff536f1d588e39b868034c90db824e2
     );
 
     public static $prefixesPsr0 = array (
+        'R' => 
+        array (
+            'Resque' => 
+            array (
+                0 => __DIR__ . '/..' . '/chrisboulton/php-resque/lib',
+            ),
+        ),
         'H' => 
         array (
             'HTMLPurifier' => 
