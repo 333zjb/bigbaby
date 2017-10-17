@@ -7,7 +7,7 @@
  */
 $config['database'] = [
     'database_type' => 'mysql',
-    'database_name' => 'b2b',
+    'database_name' => 'bigbaby',
     'server' => '127.0.0.1',
     'username' => 'root',
     'password' => '63d7b25c0e',

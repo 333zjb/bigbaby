@@ -10,8 +10,7 @@ class Index extends Base_controller
 {
 
     public function ss(){
-        $a = array('a', 'b', 'c');
-        $this->response_suc_msg($a);
+       echo date('Y-m-d H:i:s');
     }
     public function gg(){
         $database = new Base_model();

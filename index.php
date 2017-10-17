@@ -19,19 +19,20 @@
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
 //报告所有错误
 error_reporting(E_ALL);
-
+//时区
+date_default_timezone_set('Asia/Shanghai');
 //定义常量
-define('APP_PATH', 'application/');
-define('BASE_PATH', 'base/');
+define('APP_PATH', __DIR__ . '/application/');
+define('BASE_PATH', __DIR__ . '/base/');
 define('EXT', '.php');
 
 //自动加载类
 function auto_model_class($class_b)
 {
     $class = strtolower($class_b);
-    $paths = array('application/model/', 'application/service/');
+    $paths = array('model/', 'service/');
     foreach ($paths as $path) {
-        $tmp_file = $path . $class;
+        $tmp_file = APP_PATH . $path . $class;
         if (is_file($tmp_file . EXT)) {
             require $tmp_file . EXT;
             return;
@@ -107,8 +108,12 @@ if (file_exists($request_class_path)) {
     if (method_exists($request_controller, $tmp_method) && is_callable(array($request_controller, $tmp_method))) {
         $request_controller->$tmp_method();
     } else {
-        include './error_404.html';
+        echo $request_param['divide_group'].'__'.$request_param['controller'].'__'.$request_param['method'];
+        //include __DIR__ . '/error_404.html';
     }
 } else {
-    include './error_404.html';
+    var_dump(file_exists($request_class_path));echo "<br>";
+    echo $request_param['divide_group'].'__'.$request_param['controller'].'__'.$request_param['method'];
+    echo "<br>";
+    //include __DIR__ . '/error_404.html';
 }

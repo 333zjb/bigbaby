@@ -9,6 +9,7 @@
 class test
 {
     public function tt(){
-        echo 'hi jb';
+        $client = new Redis_service();
+        $client->set('crr', date('Y-m-d H:i:s'));
     }
 }
