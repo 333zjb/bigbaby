@@ -30,7 +30,7 @@ define('EXT', '.php');
 function auto_model_class($class_b)
 {
     $class = strtolower($class_b);
-    $paths = array('model/', 'service/');
+    $paths = array('model/', 'service/', 'job/');
     foreach ($paths as $path) {
         $tmp_file = APP_PATH . $path . $class;
         if (is_file($tmp_file . EXT)) {
@@ -47,6 +47,7 @@ require 'vendor/autoload.php';
 require BASE_PATH . 'base_controller.php';
 require BASE_PATH . 'base_model.php';
 require APP_PATH . 'helper/base_helper.php';
+require __DIR__ . '/vendor/chrisboulton/php-resque/resque.php';
 
 
 //路由实现(server_name(/index.php)(/divide_group)/controller/method/param1/v1/param2/v2...)
@@ -62,7 +63,7 @@ if(isset($_SERVER['REQUEST_URI'])) {
         die();
     }
 
-    $divide_group = array('admin', 'home', 'command');//分组
+    $divide_group = array('admin', 'home');//分组
     $index_php = str_replace($_SERVER['DOCUMENT_ROOT'], '', __FILE__);
 
     $has_get = strpos($_SERVER['REQUEST_URI'], '?');
