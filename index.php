@@ -47,7 +47,6 @@ require 'vendor/autoload.php';
 require BASE_PATH . 'base_controller.php';
 require BASE_PATH . 'base_model.php';
 require APP_PATH . 'helper/base_helper.php';
-require __DIR__ . '/vendor/chrisboulton/php-resque/resque.php';
 
 
 //路由实现(server_name(/index.php)(/divide_group)/controller/method/param1/v1/param2/v2...)
