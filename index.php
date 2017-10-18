@@ -43,7 +43,7 @@ function auto_model_class($class_b)
 spl_autoload_register('auto_model_class');
 
 //手动加载必要文件
-require 'vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 require BASE_PATH . 'base_controller.php';
 require BASE_PATH . 'base_model.php';
 require APP_PATH . 'helper/base_helper.php';
