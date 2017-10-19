@@ -5,6 +5,8 @@
  * Date: 2017/10/19
  * Time: 上午11:54
  */
+//独立该文件出来，方便单元测试，以及其它像resque需要用到项目的自动加载的包使用
+
 //时区
 date_default_timezone_set('Asia/Shanghai');
 //定义常量

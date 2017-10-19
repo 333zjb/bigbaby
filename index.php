@@ -19,10 +19,11 @@
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
 //报告所有错误
 error_reporting(E_ALL);
+//自动加载文件
 require __DIR__ . '/bootstrap.php';
 
 
-//路由实现(server_name(/index.php)(/divide_group)/controller/method/param1/v1/param2/v2...)
+//路由实现(server_name(/index.php)(/divide_group)/controller/method)
 $request_param = array(
     'divide_group' => 'home',
     'controller' => 'index',
