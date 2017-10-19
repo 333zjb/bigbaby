@@ -19,34 +19,7 @@
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
 //报告所有错误
 error_reporting(E_ALL);
-//时区
-date_default_timezone_set('Asia/Shanghai');
-//定义常量
-define('APP_PATH', __DIR__ . '/application/');
-define('BASE_PATH', __DIR__ . '/base/');
-define('EXT', '.php');
-
-//自动加载类
-function auto_model_class($class_b)
-{
-    $class = strtolower($class_b);
-    $paths = array('model/', 'service/', 'job/');
-    foreach ($paths as $path) {
-        $tmp_file = APP_PATH . $path . $class;
-        if (is_file($tmp_file . EXT)) {
-            require $tmp_file . EXT;
-            return;
-        }
-    }
-}
-
-spl_autoload_register('auto_model_class');
-
-//手动加载必要文件
-require __DIR__ . '/vendor/autoload.php';
-require BASE_PATH . 'base_controller.php';
-require BASE_PATH . 'base_model.php';
-require APP_PATH . 'helper/base_helper.php';
+require __DIR__ . '/bootstrap.php';
 
 
 //路由实现(server_name(/index.php)(/divide_group)/controller/method/param1/v1/param2/v2...)
