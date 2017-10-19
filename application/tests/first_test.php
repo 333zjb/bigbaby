@@ -8,6 +8,7 @@
 
 class First_test extends \PHPUnit\Framework\TestCase
 {
+    //下面test方法包含初始数据，以及fwrite的使用
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct(null, [
@@ -29,8 +30,11 @@ class First_test extends \PHPUnit\Framework\TestCase
     }
     public function testResque(){
         $b = new Resque_service();
-        $args = ['name'=>'kkk', 'age'=>16];
+        $args = ['name'=>'qqq', 'age'=>16];
         $r = $b->create_job($args, 'Fk_job');
+
+        fwrite(STDOUT, $r);//终端输出 ms
+
         $this->assertNotEmpty($r);
     }
 
