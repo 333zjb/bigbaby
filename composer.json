@@ -10,7 +10,8 @@
     "ezyang/htmlpurifier": "dev-master",
     "predis/predis": "*",
     "chrisboulton/php-resque": "*",
-    "phpunit/phpunit": "*"
+    "phpunit/phpunit": "*",
+    "robmorgan/phinx": "*"
   },
   "repositories": {
     "packagist": {
