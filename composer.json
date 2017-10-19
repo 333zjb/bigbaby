@@ -9,7 +9,8 @@
     "catfan/medoo":"*",
     "ezyang/htmlpurifier": "dev-master",
     "predis/predis": "*",
-    "chrisboulton/php-resque": "*"
+    "chrisboulton/php-resque": "*",
+    "phpunit/phpunit": "*"
   },
   "repositories": {
     "packagist": {
