@@ -1,0 +1,35 @@
+paths:
+    migrations: %%PHINX_CONFIG_DIR%%/migration/migration_class
+    seeds: %%PHINX_CONFIG_DIR%%/migration/seeds
+
+environments:
+    default_migration_table: phinxlog
+    default_database: development
+    production:
+        adapter: mysql
+        host: localhost
+        name: mir1
+        user: root
+        pass: '63d7b25c0e'
+        port: 3306
+        charset: utf8
+
+    development:
+        adapter: mysql
+        host: localhost
+        name: mir2
+        user: root
+        pass: '63d7b25c0e'
+        port: 3306
+        charset: utf8
+
+    testing:
+        adapter: mysql
+        host: localhost
+        name: bigbaby
+        user: root
+        pass: '63d7b25c0e'
+        port: 3306
+        charset: utf8
+
+version_order: creation
