@@ -30,14 +30,17 @@ $request_param = array(
     'method' => 'index'
 );
 if(isset($_SERVER['REQUEST_URI'])) {
-    if ($_SERVER['REQUEST_URI'] === '/favicon.ico') {
-        //由于目前是所有请求都重定向到index.php。所以访问favicon文件需要这样
-        echo file_get_contents('./favicon.ico');
-        die();
-    }
+//    if ($_SERVER['REQUEST_URI'] === '/favicon.ico') {
+//        //由于目前是所有请求都重定向到index.php。所以访问favicon文件需要这样
+//        echo file_get_contents('./favicon.ico');
+//        die();
+//    }
 
     $divide_group = array('admin', 'home');//分组
-    $index_php = str_replace($_SERVER['DOCUMENT_ROOT'], '', __FILE__);
+    //为了兼容windows （__DIR__里的目录分隔符在windows下和$_SERVER['']里的不一样）
+    $file_match = str_replace('\\', '/', __FILE__);
+    $dir_match = str_replace('\\', '/', __DIR__);
+    $index_php = str_replace($_SERVER['DOCUMENT_ROOT'], '', $file_match);
 
     $has_get = strpos($_SERVER['REQUEST_URI'], '?');
     $has_get_bool = ($has_get !== false);
@@ -50,6 +53,13 @@ if(isset($_SERVER['REQUEST_URI'])) {
     $behind_string = str_replace($index_php, '', $tmp_request_uri);
     $behind_string = trim($behind_string, '/');
     $behind_array = $behind_string === '' ? array() : explode('/', $behind_string);
+    //如果有项目名的话，去除项目名(兼容站点设置为上一级目录情况的访问)
+    if($_SERVER['DOCUMENT_ROOT'] !== $dir_match){
+        $project_name = str_replace($_SERVER['DOCUMENT_ROOT'] . '/', '', $dir_match);
+        if($project_name === $behind_array[0]){
+            array_shift($behind_array);
+        }
+    }
     $behind_array_length = count($behind_array);
 
     if ($behind_array_length > 0) {
