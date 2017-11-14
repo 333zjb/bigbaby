@@ -12,6 +12,9 @@ class Index extends Base_controller
     public function ss(){
        echo date('Y-m-d H:i:s');
     }
+    public function testexport(){
+        $this->exportCsv([['a']], ['test'], 'test');
+    }
     public function gg(){
         $database = new Base_model();
         $a = $database->select("tp_admin", [
