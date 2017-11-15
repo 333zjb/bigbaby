@@ -82,24 +82,17 @@ class Base_controller
         }
 
         foreach ($data as $k => $row) {
+            if(!$key_arr){
+                $key_arr = array_keys($row);
+            }
 
-            if($key_arr){
-                foreach ($key_arr as $sort_key){
-                    $tmp_value = isset($row[$sort_key]) ? $row[$sort_key] : 'title_arr key wrong';
-                    if(is_numeric($tmp_value) && strlen($tmp_value) > 10){
-                        $csv_data .= $tmp_value . "\t,";//防止导出为科学计数
-                    }else {
-                        $csv_data .= '"' . $tmp_value . '",';
-                    }
-                }
-            }else{
-                foreach ($row as $tmp_value){
-                    // $row[$key] = str_replace("\"", "\"\"", $r);
-                    if(is_numeric($tmp_value) && strlen($tmp_value) > 10){
-                        $csv_data .= $tmp_value . "\t,";//防止导出为科学计数
-                    }else {
-                        $csv_data .= '"' . $tmp_value . '",';
-                    }
+            foreach ($key_arr as $sort_key){
+                $tmp_value = isset($row[$sort_key]) ? $row[$sort_key] : 'title_arr key wrong';
+                // $tmp_value = str_replace("\"", "\"\"", $r);
+                if(is_numeric($tmp_value) && strlen($tmp_value) > 10){
+                    $csv_data .= $tmp_value . "\t,";//防止导出为科学计数
+                }else {
+                    $csv_data .= '"' . $tmp_value . '",';
                 }
             }
 
