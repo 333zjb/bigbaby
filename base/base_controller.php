@@ -66,23 +66,40 @@ class Base_controller
         $csv_data = '';
         /** 标题 */
         $nums = count($title_arr);
-
-        for ($i = 0; $i < $nums; ++$i) {
-
-            if($i==($nums-1)){
-                $csv_data .= '"' . $title_arr[$i] . "\"\r\n";
-            }else{
-                $csv_data .= '"' . $title_arr[$i] . '",';
+        $i = 0;
+        $key_arr = [];
+        $is_word_key = array_keys($title_arr) !== range(0, $nums-1);
+        foreach ($title_arr as $title_key=>$title_value){
+            if($is_word_key){
+                $key_arr[] = $title_key;
             }
+            if($i === $nums-1){
+                $csv_data .= '"' . $title_value . "\"\r\n";
+            }else{
+                $csv_data .= '"' . $title_value . '",';
+            }
+            ++$i;
         }
 
         foreach ($data as $k => $row) {
-            foreach ($row as $key => $r){
-                // $row[$key] = str_replace("\"", "\"\"", $r);
-                if(is_numeric($row[$key]) && strlen($row[$key]) > 10){
-                    $csv_data .= $row[$key] . "\t,";//防止导出为科学计数
-                }else {
-                    $csv_data .= '"' . $row[$key] . '",';
+
+            if($key_arr){
+                foreach ($key_arr as $sort_key){
+                    $tmp_value = isset($row[$sort_key]) ? $row[$sort_key] : 'title_arr key wrong';
+                    if(is_numeric($tmp_value) && strlen($tmp_value) > 10){
+                        $csv_data .= $tmp_value . "\t,";//防止导出为科学计数
+                    }else {
+                        $csv_data .= '"' . $tmp_value . '",';
+                    }
+                }
+            }else{
+                foreach ($row as $tmp_value){
+                    // $row[$key] = str_replace("\"", "\"\"", $r);
+                    if(is_numeric($tmp_value) && strlen($tmp_value) > 10){
+                        $csv_data .= $tmp_value . "\t,";//防止导出为科学计数
+                    }else {
+                        $csv_data .= '"' . $tmp_value . '",';
+                    }
                 }
             }
 

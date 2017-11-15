@@ -13,7 +13,7 @@ class Index extends Base_controller
        echo date('Y-m-d H:i:s');
     }
     public function testexport(){
-        $this->exportCsv([['a']], ['test'], 'test');
+        $this->exportCsv([['c'=>'a', 'd'=>'b', 'e'=>'c']], ['k'=>'test', 'c'=>'t2'], 'test');
     }
     public function gg(){
         $database = new Base_model();
