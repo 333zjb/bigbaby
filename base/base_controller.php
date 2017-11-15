@@ -79,7 +79,7 @@ class Base_controller
         foreach ($data as $k => $row) {
             foreach ($row as $key => $r){
                 // $row[$key] = str_replace("\"", "\"\"", $r);
-                if(is_numeric($row[$key])){
+                if(is_numeric($row[$key]) && strlen($row[$key]) > 10){
                     $csv_data .= $row[$key] . "\t,";//防止导出为科学计数
                 }else {
                     $csv_data .= '"' . $row[$key] . '",';
