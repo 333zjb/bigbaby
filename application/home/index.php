@@ -17,6 +17,10 @@ class Index extends Base_controller
     public function testexport(){
         $this->exportCsv([['c'=>'a', 'd'=>'b', 'e'=>'c']], ['k'=>'test', 'c'=>'t2'], 'test');
     }
+    public function testmysql(){
+        $db = new Base_model();
+        $db->insert('test',['name'=>'one', 'password'=>'baomi', 'email'=>'haha']);
+    }
     public function gg(){
         $database = new Base_model();
         $a = $database->select("tp_admin", [
