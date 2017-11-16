@@ -9,7 +9,7 @@
 class Index extends Base_controller
 {
     public function show(){
-        echo "<b>welcom dream back</b>";
+        echo '<img src="./upload/wechat.jpeg">';
     }
     public function ss(){
        echo date('Y-m-d H:i:s');
