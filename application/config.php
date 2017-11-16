@@ -10,7 +10,8 @@ $config['database'] = [
     'database_name' => 'bigbaby',
     'server' => '127.0.0.1',
     'username' => 'root',
-    'password' => '63d7b25c0e',
+    //'password' => '63d7b25c0e',
+    'password' => '6431666',
     'charset' => 'utf8'
 ];
 

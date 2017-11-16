@@ -27,7 +27,7 @@ require __DIR__ . '/bootstrap.php';
 $request_param = array(
     'divide_group' => 'home',
     'controller' => 'index',
-    'method' => 'index'
+    'method' => 'show'
 );
 if(isset($_SERVER['REQUEST_URI'])) {
 //    if ($_SERVER['REQUEST_URI'] === '/favicon.ico') {
