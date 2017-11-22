@@ -13,10 +13,6 @@ class ComposerStaticInit4ff536f1d588e39b868034c90db824e2
     );
 
     public static $prefixLengthsPsr4 = array (
-        'r' => 
-        array (
-            'reportico\\reportico\\' => 20,
-        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -52,10 +48,6 @@ class ComposerStaticInit4ff536f1d588e39b868034c90db824e2
     );
 
     public static $prefixDirsPsr4 = array (
-        'reportico\\reportico\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/reportico/yii2-reportico',
-        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a72671737b3b8b9f3d348a65cb99be7",
+    "content-hash": "9b2b407a0a18f2aaeb67c716ea4c0f31",
     "packages": [
         {
             "name": "catfan/medoo",
@@ -1054,43 +1054,6 @@
                 "psr-3"
             ],
             "time": "2016-10-10T12:19:37+00:00"
-        },
-        {
-            "name": "reportico/yii2-reportico",
-            "version": "4.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reportico-web/yii2-reportico.git",
-                "reference": "24f70373fa5d6ccc120ad0ebe3fababf51ea9f5c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/reportico-web/yii2-reportico/24f70373fa5d6ccc120ad0ebe3fababf51ea9f5c.zip",
-                "reference": "24f70373fa5d6ccc120ad0ebe3fababf51ea9f5c",
-                "shasum": ""
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "reportico\\reportico\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Peter Deed",
-                    "email": "info@reportico.org"
-                }
-            ],
-            "description": "Reportico",
-            "keywords": [
-                "extension",
-                "yii2"
-            ],
-            "time": "2016-11-25T17:33:47+00:00"
         },
         {
             "name": "robmorgan/phinx",

@@ -11,8 +11,7 @@
     "predis/predis": "*",
     "chrisboulton/php-resque": "*",
     "phpunit/phpunit": "*",
-    "robmorgan/phinx": "*",
-    "reportico/yii2-reportico": "*"
+    "robmorgan/phinx": "*"
   },
   "repositories": {
     "packagist": {

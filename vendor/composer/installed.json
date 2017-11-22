@@ -2195,44 +2195,5 @@
         ],
         "description": "Symfony Yaml Component",
         "homepage": "https://symfony.com"
-    },
-    {
-        "name": "reportico/yii2-reportico",
-        "version": "4.6",
-        "version_normalized": "4.6.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/reportico-web/yii2-reportico.git",
-            "reference": "24f70373fa5d6ccc120ad0ebe3fababf51ea9f5c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://files.phpcomposer.com/files/reportico-web/yii2-reportico/24f70373fa5d6ccc120ad0ebe3fababf51ea9f5c.zip",
-            "reference": "24f70373fa5d6ccc120ad0ebe3fababf51ea9f5c",
-            "shasum": ""
-        },
-        "time": "2016-11-25T17:33:47+00:00",
-        "type": "yii2-extension",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "reportico\\reportico\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0"
-        ],
-        "authors": [
-            {
-                "name": "Peter Deed",
-                "email": "info@reportico.org"
-            }
-        ],
-        "description": "Reportico",
-        "keywords": [
-            "extension",
-            "yii2"
-        ]
     }
 ]
